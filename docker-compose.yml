@@ -1,0 +1,19 @@
+version: '2'
+services:
+  back:
+    env_file:
+      - .env
+    build:
+      context: ./back
+    volumes:
+      - ./back:/back:rw,consistent
+    ports:
+      - "5000:8080"
+
+  front:
+    build:
+      context: ./front
+    volumes:
+      - ./front/src:/front/src
+    ports:
+      - "3000:8080"
