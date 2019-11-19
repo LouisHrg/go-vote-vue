@@ -1,0 +1,14 @@
+{
+    "engines": {
+        "node": "12.13.0",
+        "yarn": "1.19.1"
+    },
+    "scripts": {
+        "start": "yarn run serve",
+        "heroku-postbuild": "cd front && yarn --network-concurrency 1 && yarn run build"
+    },
+    "repository": {
+        "type": "git",
+        "url": "git+ssh://git@github.com:LouisHrg/go-vote-vue.git"
+    }
+}
