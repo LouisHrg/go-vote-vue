@@ -1,11 +1,10 @@
 up:
-	@ docker-compose up -d
+	docker-compose up -d --build
+
+down:
+	docker-compose down
 
 run:
-	@ docker-compose up -d
+	docker-compose up --build
 
-vue:
-	@ cd ./front && yarn serve
-
-go:
-	@ cd ./back && go build && ./go-vote
+.PHONY: up down run

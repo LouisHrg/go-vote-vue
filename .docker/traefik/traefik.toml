@@ -1,0 +1,29 @@
+################################################################
+# Global configuration
+################################################################
+[global]
+  checkNewVersion = true
+  sendAnonymousUsage = false
+
+[entrypoints]
+  [entrypoints.http]
+  address = ":80"
+  [entryPoints.https]
+  address = ":443"
+    [entryPoints.https.tls]
+
+[log]
+
+[api]
+
+[ping]
+
+[providers.docker]
+
+
+[forge-hr]
+email = "louis@narah.io"
+
+[[forge-hr.domains]]
+  main = "govote.test"
+  sans = ["srv.govote.test"]
