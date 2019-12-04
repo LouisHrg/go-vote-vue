@@ -1,12 +1,29 @@
-# NEED 
+# rh-tool-front
 
-- docker
-- docker-compose
-
-# START
-
-```bash
-docker-compose up
+## Project setup
 ```
-Front is accessible on <http://localhost:3000>
-Back is accessible on <http://localhost:5000>
+yarn install
+```
+
+### Compiles and hot-reloads for development
+```
+yarn run serve
+```
+
+### Compiles and minifies for production
+```
+yarn run build
+```
+
+### Run your tests
+```
+yarn run test
+```
+
+### Lints and fixes files
+```
+yarn run lint
+```
+
+### Customize configuration
+See [Configuration Reference](https://cli.vuejs.org/config/).

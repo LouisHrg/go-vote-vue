@@ -1,19 +1,29 @@
-version: '2'
-services:
-  back:
-    env_file:
-      - .env
-    build:
-      context: ./back
-    volumes:
-      - ./back:/back:rw,consistent
-    ports:
-      - "5000:8000"
+version: '3'
 
+services:
   front:
-    build:
-      context: ./front
+    container_name: go-vue
+    image: node:lts-alpine
+    working_dir: /home/go-vote-vue/front
     volumes:
-      - ./front/src:/front/src
+      - ./:/home/go-vote-vue/front
+    labels:
+      - "traefik.frontend.rule=Host:govote.test"
+      - "traefik.port=8080"
+      - "traefik.frontend.headers.customResponseHeaders=Access-Control-Allow-Origin:*"
+    command: ["yarn", "serve"]
+
+  traefik:
+    container_name: go-vote-traefik
+    image: traefik:latest
+    command: --api --docker
     ports:
-      - "3000:8080"
+      - "80:80"
+      - "443:443"
+      - "18080:8080"
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock
+      - ./.docker/traefik/traefik.toml:/etc/traefik/traefik.toml:ro
+    labels:
+      - "traefik.frontend.rule=Host:srv.govote.test"
+      - "traefik.port=8080"

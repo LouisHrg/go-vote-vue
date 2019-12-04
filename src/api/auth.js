@@ -5,6 +5,6 @@ export default {
     return axios.post('/login', { email, password });
   },
   getUserInfo () {
-    return axios.get('/users/me');
+    return axios.get('/login/me');
   }
 };
