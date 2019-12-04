@@ -22,7 +22,7 @@
       <el-menu :router=true class="el-menu-demo" mode="horizontal">
         <el-submenu index="6" class="right-menu-el">
           <template slot="title">
-            <img class="navbar-avatar" src="https://upload.wikimedia.org/wikipedia/commons/thumb/a/ad/Placeholder_no_text.svg/1024px-Placeholder_no_text.svg.png"  :alt="`${user.username}'s avatar`"/>
+            <img class="navbar-avatar" :src="user.avatar"  :alt="`${user.username}'s avatar`"/>
             {{ user.username }}
           </template>
           <el-menu-item index="1-1" route="/profile">Profile</el-menu-item>
