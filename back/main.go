@@ -19,7 +19,7 @@ func init() {
 	  log.Printf("Error loading .env file")
 	}
 
-	var port = "8080"
+	var port = "8000"
 	if len(port) == 0 {
 		log.Panic("no given port")
 	}
