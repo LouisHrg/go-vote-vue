@@ -1,5 +1,5 @@
 {
-  "name": "go-vue-vote",
+  "name": "rh-tool-front",
   "version": "0.1.0",
   "private": true,
   "scripts": {
@@ -9,6 +9,7 @@
   },
   "dependencies": {
     "axios": "^0.18.0",
+    "dayjs": "^1.8.17",
     "dotenv": "^7.0.0",
     "element-ui": "^2.6.3",
     "vue": "^2.6.6",

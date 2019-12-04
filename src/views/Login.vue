@@ -3,12 +3,12 @@
       <el-col :span="6">
         <el-card class="box-card">
           <div slot="header" class="clearfix">
-            <h2>Go Vue Vote</h2>
+            <h2>Awesome Go Vote</h2>
             <h4>Welcome back!</h4>
           </div>
           <div>
             <el-form @submit.prevent.native=submitLogin>
-              <label for="email">Nom d'utilisateur</label>
+              <label for="email">Email de 'lutilisateur</label>
               <el-input id="email" ref="email" class="m-5" v-model="form.email"></el-input>
               <label for="password">Mot de passe</label>
               <el-input id="password" ref="password" class="m-5" v-model="form.password" show-password></el-input>
@@ -69,8 +69,11 @@ export default {
       }
 
       try {
+        console.log('login...');
         await this.login({ email, password });
+        console.log('fetch user infos...');
         await this.fetchUserInfo();
+        console.log('redirect...');
         await this.$router.push({ path: '/' });
       } catch (error) {
         console.log(error);

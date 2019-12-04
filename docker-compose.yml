@@ -10,7 +10,6 @@ services:
     labels:
       - "traefik.frontend.rule=Host:govote.test"
       - "traefik.port=8080"
-      - "traefik.frontend.headers.customResponseHeaders=Access-Control-Allow-Origin:*"
     command: ["yarn", "serve"]
 
   traefik:

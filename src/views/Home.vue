@@ -1,6 +1,6 @@
 <template>
     <div>
-      <div> Welcome to <strong>The Forge</strong>, the HR tool of Wizards Technologies !</div>
+      <div> Welcome to <strong>Go Vote</strong>, the BESTEST app for surveys and poll in the world !</div>
       <img src="../assets/logo.png">
     </div>
 </template>

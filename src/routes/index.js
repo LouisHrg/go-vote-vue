@@ -9,9 +9,7 @@ import LayoutDefault from '@/layouts/LayoutDefault.vue';
 import LayoutModal from '@/layouts/LayoutModal.vue';
 
 import usersRoutes from '@/routes/users';
-import invoicesRoutes from '@/routes/invoices';
-import filesRoutes from '@/routes/files';
-import absencesRoutes from '@/routes/absences';
+import surveysRoutes from '@/routes/surveys';
 import authRoutes from '@/routes/auth';
 
 import store from '@/store';
@@ -35,9 +33,7 @@ export const router = new Router({
           }
         },
         ...usersRoutes,
-        ...invoicesRoutes,
-        ...filesRoutes,
-        ...absencesRoutes
+        ...surveysRoutes
       ]
     },
     {
@@ -59,7 +55,7 @@ router.beforeEach(async (to, from, next) => {
     try {
       const response = await authApi.getUserInfo();
       const user = response.data;
-      if (!user || !user.isActive) {
+      if (!user) {
         await store.dispatch('auth/logout');
         return next('/login');
       }

@@ -18,8 +18,9 @@ export default {
   }
 
   .container {
-    background: url("../assets/logo.png") repeat, linear-gradient(to right, #0f2027, #203a43, #2c5364) no-repeat;
+    background: url("../assets/sick.png") repeat, linear-gradient(to right, #0f2027, #203a43, #2c5364) no-repeat;
     background-size: 100px, 100%;
+    animation: moveFromBottomLeftToTopRight 75s linear infinite;
   }
 
   @keyframes moveFromBottomLeftToTopRight {

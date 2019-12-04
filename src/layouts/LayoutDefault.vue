@@ -3,23 +3,17 @@
   <el-aside width="200px">
     <el-menu :router=true class="app-container">
     <div class="sidebar-header">
-      <p class="sidebar-sitename">Go Vue Vote</p>
-      <p>Lolax Corp</p>
+      <p class="sidebar-sitename">Go vote</p>
+      <p>Best app on earth</p>
     </div>
     <el-menu-item route="/"  index="1">
       Home
     </el-menu-item>
-    <el-menu-item route="/invoices" index="2">
-      Invoices
+    <el-menu-item route="/surveys" index="2">
+      Surveys
     </el-menu-item>
-    <el-menu-item route="/absences"  index="3">
-      Absences
-    </el-menu-item>
-    <el-menu-item route="/files"  index="4">
-      My Files
-    </el-menu-item>
-    <el-menu-item route="/users"  index="5">
-      Users
+    <el-menu-item route="/surveys"  index="3">
+      My Surveys
     </el-menu-item>
     </el-menu>
   </el-aside>
@@ -28,7 +22,7 @@
       <el-menu :router=true class="el-menu-demo" mode="horizontal">
         <el-submenu index="6" class="right-menu-el">
           <template slot="title">
-            <img v-if="user.avatar" class="navbar-avatar" :src="`http://api.test/public/files/${user.avatar}`"  :alt="`${user.username}'s avatar`"/>
+            <img class="navbar-avatar" src="https://upload.wikimedia.org/wikipedia/commons/thumb/a/ad/Placeholder_no_text.svg/1024px-Placeholder_no_text.svg.png"  :alt="`${user.username}'s avatar`"/>
             {{ user.username }}
           </template>
           <el-menu-item index="1-1" route="/profile">Profile</el-menu-item>
