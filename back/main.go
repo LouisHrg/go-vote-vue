@@ -53,8 +53,11 @@ func initRouter() *gin.Engine {
 	auth := r.Group("/")
 	auth.Use(middleware.JwtTokenCheck)
 	{
+
 		auth.GET("/users", handler.GetUsers)
 		auth.GET("/users/:uuid", handler.GetUser)
+
+		auth.GET("/login/me", handler.GetCurrentUser)
 
 		auth.PATCH("/responses/:uuid/vote", handler.Vote)
 		auth.DELETE("/responses/:uuid/vote", handler.DeleteVote)
@@ -85,5 +88,5 @@ func main() {
 
 	r := initRouter()
 
-	r.Run()
+	r.Run(":8000")
 }

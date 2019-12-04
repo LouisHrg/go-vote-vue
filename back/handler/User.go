@@ -3,6 +3,7 @@ package handler
 import (
 	"github.com/gin-gonic/gin"
 	"github.com/go-vote/model"
+	"fmt"
 )
 
 // GetUsers : fetch all the users from the database
@@ -12,6 +13,26 @@ func GetUsers(c *gin.Context) {
 
 	getAll(c, &users)
 
+}
+
+// GetCurrentUser : get current user info
+func GetCurrentUser(c *gin.Context) {
+	var user model.User
+
+ 	uuid, _ := c.Get("uuid")
+
+ 	fmt.Println("CLIQUE SALOPE")
+
+ 	fmt.Println(uuid)
+
+	if err := db.Set("gorm:auto_preload", true).Where("uuid = ?", uuid).First(&user).Error; err != nil {
+		c.JSON(404, gin.H{
+			"code": 404,
+			"message": "Ressource not found",
+		})
+	} else {
+		c.JSON(200, user)
+	}
 }
 
 // GetUser : fetch one user by his id

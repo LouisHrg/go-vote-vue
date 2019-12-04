@@ -9,4 +9,4 @@ RUN go build
 
 CMD go get github.com/pilu/fresh && fresh;
 
-EXPOSE 8080
+EXPOSE 8000
