@@ -6,8 +6,10 @@ import 'vue-material-design-icons/styles.css';
 import router from '@/routes';
 import store from '@/store';
 import App from '@/App.vue';
+import Formikax from './formikax';
 
 Vue.use(ElementUI);
+Vue.use(Formikax);
 Vue.config.productionTip = process.env.NODE_ENV !== 'production';
 
 new Vue({
