@@ -1,20 +1,18 @@
 <template>
-    <el-row justify="center" align="middle" type="flex" class="el-row loginContainer">
+    <el-row justify="center" align="middle" type="flex" class="loginContainer">
       <el-col :span="6">
         <el-card class="box-card">
           <div slot="header" class="clearfix">
             <h2>Awesome Go Vote</h2>
             <h4>Welcome back!</h4>
           </div>
-          <div>
-            <el-form @submit.prevent.native=submitLogin>
-              <label for="email">Email de 'lutilisateur</label>
-              <el-input id="email" ref="email" class="m-5" v-model="form.email"></el-input>
-              <label for="password">Mot de passe</label>
-              <el-input id="password" ref="password" class="m-5" v-model="form.password" show-password></el-input>
+          <Formikax @onSubmit="submitLogin" v-slot="{ handleSubmit }">
+            <form @submit.prevent="handleSubmit">
+              <Field name="email" />
+              <Field name="password" type="password" />
               <el-button native-type="submit" type="primary" :loading="loading">Connexion</el-button>
-            </el-form>
-          </div>
+            </form>
+          </Formikax>
         </el-card>
       </el-col>
     </el-row>
@@ -34,16 +32,13 @@ export default {
       loading: false
     };
   },
-  mounted () {
-    this.$nextTick(() => this.$refs.email.focus());
-  },
   methods: {
     ...mapActions('auth', [
       'fetchUserInfo',
       'login'
     ]),
-    async submitLogin () {
-      const { email, password } = this.form;
+    async submitLogin ({ values }) {
+      const { email, password } = values;
       this.loading = true;
 
       if (!email) {
@@ -52,7 +47,6 @@ export default {
           message: 'Please enter your email.',
           type: 'error'
         });
-        this.$refs.email.focus();
         this.loading = false;
         return;
       }
@@ -63,20 +57,15 @@ export default {
           message: 'Please enter your password.',
           type: 'error'
         });
-        this.$refs.password.focus();
         this.loading = false;
         return;
       }
 
       try {
-        console.log('login...');
         await this.login({ email, password });
-        console.log('fetch user infos...');
         await this.fetchUserInfo();
-        console.log('redirect...');
         await this.$router.push({ path: '/' });
       } catch (error) {
-        console.log(error);
         this.$message({
           showClose: true,
           message: 'Oops, Bad credentials.',
