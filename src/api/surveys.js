@@ -11,6 +11,6 @@ export default {
     return axios.put(`/surveys/${id}`, { resource });
   },
   postSurvey (resource) {
-    return axios.put(`/surveys`, { resource });
+    return axios.post(`/surveys`, resource);
   }
 };
