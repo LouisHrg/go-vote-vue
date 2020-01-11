@@ -56,10 +56,11 @@ export default {
       'fetchSurveys'
     ]),
     handleEdit (index, row) {
-      this.$router.push({ name: 'surveys.edit', params: { id: row.id } });
+      this.$router.push({ name: 'surveys.edit', params: { uuid: row.uuid } });
     },
     handleView (index, row) {
-      this.$router.push({ name: 'surveys.show', params: { id: row.id } });
+      console.log(row.uuid);
+      this.$router.push({ name: 'surveys.show', params: { uuid: row.uuid } });
     },
     handleNew () {
       this.$router.push({ name: 'surveys.new' });

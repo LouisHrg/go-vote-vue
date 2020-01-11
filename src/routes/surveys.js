@@ -12,7 +12,7 @@ const routes = [
     }
   },
   {
-    path: '/surveys/:id',
+    path: '/surveys/:uuid',
     name: 'surveys.show',
     component: SurveyShow,
     meta: {
