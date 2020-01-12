@@ -3,21 +3,22 @@
     <el-row type="flex" justify="center">
       <el-col :span="16">
         <el-card class="clearfix">
-          <div>
-            <el-tooltip class="item edit-button" effect="dark" content="Edit your profile" placement="left-start">
-              <el-button type="primary" icon="el-icon-edit" circle></el-button>
-            </el-tooltip>
-           </div>
+          <el-tooltip class="item pins edit" effect="dark" content="Edit your profile" placement="bottom-start">
+            <el-button type="primary" icon="el-icon-edit" circle></el-button>
+          </el-tooltip>
+          <el-tooltip v-if="user.access_level === 1" class="item pins admin" effect="dark" content="Admin" placement="left-start">
+            <el-button type="success" icon="el-icon-user-solid" circle></el-button>
+          </el-tooltip>
           <div class="clearfix-top">
-              <img class="avatar-logo" src="../../assets/logo.png" />
-              <h1>Louis HARANG</h1>
-              <p class="role"> Développeur </p>
-              <p class="bio"> Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. </p>
+              <img class="avatar-logo" :src="user.avatar" />
+              <h1>{{user.firstname }} {{ user.lastname }}</h1>
+              <p class="role"> {{ user.date_of_birth | dateFormatter }} </p>
+              <p class="bio"> {{ user.bio }} </p>
           </div>
         </el-card>
         <el-card class="clearfix">
           <h2> Informations </h2>
-          <p> Email : lharang.pro@gmail.com </p>
+          <p> Email : {{ user.email }} </p>
           <p> Address : 15 rue notre Dame </p>
           <p> City : Montmorency </p>
           <p> Postal Code : 95160 </p>
@@ -44,12 +45,25 @@
   .clearfix-top{
     margin-top: 50px;
   }
-  .edit-button{
+  .pins{
     float: right;
+  }
+  .admin{
+    margin-right: 5px;
   }
 </style>
 <script>
+import { mapState } from 'vuex';
+import dayjs from 'dayjs';
 export default {
-  name: 'Profile'
+  name: 'Profile',
+  computed: mapState({
+    user: state => state.auth.user
+  }),
+  filters: {
+    dateFormatter: date => {
+      return dayjs(date).format('DD/MM/YYYY');
+    }
+  }
 };
 </script>
