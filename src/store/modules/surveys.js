@@ -26,7 +26,7 @@ const actions = {
   },
   async fetchSurvey ({ commit }, id) {
     const { data: survey } = await resourceApi.getSurvey(id);
-    commit('setSurvey', survey);
+    commit('setSurvey', survey.data);
   },
   async putSurvey ({ commit }, id, resource) {
     const { data: res } = await resourceApi.putSurvey(id, resource);
@@ -35,6 +35,15 @@ const actions = {
   async postSurvey ({ commit }, resource) {
     const { data: res } = await resourceApi.postSurvey(resource);
     commit('setSurvey', res);
+  },
+  vote ({ commit }, { response, survey }) {
+    commit('setSurvey', {
+      ...survey,
+      Responses: [
+        ...survey.Responses,
+        response
+      ]
+    });
   }
 };
 
