@@ -59,7 +59,6 @@ export default {
       this.$router.push({ name: 'surveys.edit', params: { uuid: row.uuid } });
     },
     handleView (index, row) {
-      console.log(row.uuid);
       this.$router.push({ name: 'surveys.show', params: { uuid: row.uuid } });
     },
     handleNew () {

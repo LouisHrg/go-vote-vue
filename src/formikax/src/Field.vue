@@ -8,6 +8,7 @@
       :name="name"
       :placeholder="name"
       :value="value"
+      :disabled="disabled"
       @input="handleInput"
     >
       <slot/>
@@ -37,6 +38,10 @@ export default {
       default: false
     },
     checked: {
+      type: Boolean,
+      default: false
+    },
+    disabled: {
       type: Boolean,
       default: false
     }

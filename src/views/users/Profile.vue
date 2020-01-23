@@ -4,7 +4,7 @@
       <el-col :span="16">
         <el-card class="clearfix">
           <el-tooltip class="item pins edit" effect="dark" content="Edit your profile" placement="bottom-start">
-            <el-button type="primary" icon="el-icon-edit" circle></el-button>
+            <el-button  @click="() => handleEdit()" type="primary" icon="el-icon-edit" circle></el-button>
           </el-tooltip>
           <el-tooltip v-if="user.access_level === 1" class="item pins admin" effect="dark" content="Admin" placement="left-start">
             <el-button type="success" icon="el-icon-user-solid" circle></el-button>
@@ -50,6 +50,7 @@
   }
   .admin{
     margin-right: 5px;
+    cursor: default;
   }
 </style>
 <script>
@@ -60,6 +61,11 @@ export default {
   computed: mapState({
     user: state => state.auth.user
   }),
+  methods: {
+    handleEdit () {
+      this.$router.push({ name: 'users.edit' });
+    }
+  },
   filters: {
     dateFormatter: date => {
       return dayjs(date).format('DD/MM/YYYY');
