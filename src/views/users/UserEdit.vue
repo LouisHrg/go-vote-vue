@@ -9,8 +9,8 @@
           <div class="clearfix-top">
             <Formikax @onSubmit="submitSurvey" v-slot="{ handleSubmit }">
               <form @submit.prevent="handleSubmit">
-                <img class="avatar-logo" :src="avatar" />
-                <Field label="Avatar" name="avatar" :value="user.avatar" @input="(value) => handleAvatar(value)"/>
+                <img class="avatar-logo" :src="tempAvatar" />
+                <Field label="Avatar" name="avatar" :value="user.avatar" @input="handleAvatar" />
                 <Field label="First Name" name="firstName" :value="user.firstname"/>
                 <Field label="Last Name" name="lastName" :value="user.lastname"/>
                 <Field label="Birth Date" type="date" name="date_of_birth" :value="user.date_of_birth | dateFormatter"/>
@@ -58,6 +58,12 @@ import { mapState } from 'vuex';
 import dayjs from 'dayjs';
 export default {
   name: 'UserEdit',
+  mounted () {
+    this.tempAvatar = this.avatar;
+  },
+  data: () => ({
+    tempAvatar: ''
+  }),
   computed: mapState({
     user: state => state.auth.user,
     avatar: state => state.auth.user.avatar
@@ -70,7 +76,7 @@ export default {
   },
   methods: {
     handleAvatar (value) {
-      //   this.$store.dispatch('setAvatar', value)
+      this.tempAvatar = value;
     }
   }
 };
