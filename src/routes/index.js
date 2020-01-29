@@ -62,6 +62,7 @@ router.beforeEach(async (to, from, next) => {
       await store.commit('auth/setUser', user);
       return next();
     } catch (error) {
+      if (to.fullPath === '/')next('/login');
       if (error.response.data.code === 401) {
         await store.dispatch('auth/logout');
         return next('/login');
