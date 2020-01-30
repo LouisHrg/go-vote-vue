@@ -86,7 +86,7 @@ export default {
   }
 };
 </script>
-<style lang="scss">
+<style lang="scss" scoped>
 //colors
 $bgColor: #130560;
 $subMarineColor: #e30449;

@@ -3,6 +3,7 @@ import Vuex from 'vuex';
 import auth from '@/store/modules/auth';
 import surveys from '@/store/modules/surveys';
 import users from '@/store/modules/users';
+import settings from '@/store/modules/settings';
 import VuexPersist from 'vuex-persist';
 
 Vue.use(Vuex);
@@ -22,7 +23,8 @@ export default new Vuex.Store({
   modules: {
     auth,
     surveys,
-    users
+    users,
+    settings
   },
   plugins: [vueLocalStorage.plugin]
 });

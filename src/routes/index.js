@@ -11,6 +11,7 @@ import LayoutModal from '@/layouts/LayoutModal.vue';
 import usersRoutes from '@/routes/users';
 import surveysRoutes from '@/routes/surveys';
 import authRoutes from '@/routes/auth';
+import settingsRoutes from '@/routes/settings';
 
 import store from '@/store';
 
@@ -33,7 +34,8 @@ export const router = new Router({
           }
         },
         ...usersRoutes,
-        ...surveysRoutes
+        ...surveysRoutes,
+        ...settingsRoutes
       ]
     },
     {

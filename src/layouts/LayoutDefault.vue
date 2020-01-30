@@ -26,7 +26,7 @@
             {{ user.username }}
           </template>
           <el-menu-item index="1-1" route="/profile">Profile</el-menu-item>
-          <el-menu-item index="1-2">Settings</el-menu-item>
+          <el-menu-item index="settings">Settings</el-menu-item>
           <el-menu-item route="logout" index="1-3">Logout</el-menu-item>
         </el-submenu>
         <el-menu-item index="1-0" class="right-menu-el">
@@ -78,5 +78,8 @@ export default {
   .navbar-avatar{
     width: 30px;
     border-radius: 50px;
+  }
+  .el-menu {
+    background-color: var(--bg-color);
   }
 </style>
