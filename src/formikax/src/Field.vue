@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="formikax_row">
     <label :for="innerId">{{ innerLabel }}</label>
     <component
       :is="innerAs"
@@ -71,4 +71,14 @@ export default {
 </script>
 
 <style scoped>
+  .formikax_row{
+    margin-top: 20px;
+    margin-bottom: 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  textarea{
+    width: 239px;
+  }
 </style>

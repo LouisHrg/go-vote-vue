@@ -6,13 +6,15 @@
             <h2>Awesome Go Vote</h2>
             <h4>Welcome back!</h4>
           </div>
-          <Formikax @onSubmit="submitLogin" v-slot="{ handleSubmit }">
-            <form @submit.prevent="handleSubmit">
-              <Field name="email" />
-              <Field name="password" type="password" />
-              <el-button native-type="submit" type="primary" :loading="loading">Connexion</el-button>
-            </form>
-          </Formikax>
+          <div class="login_form">
+            <Formikax @onSubmit="submitLogin" v-slot="{ handleSubmit }">
+              <form @submit.prevent="handleSubmit">
+                <Field name="email" />
+                <Field name="password" type="password" />
+                <el-button native-type="submit" type="primary" :loading="loading">Connexion</el-button>
+              </form>
+            </Formikax>
+          </div>
         </el-card>
       </el-col>
     </el-row>
@@ -81,5 +83,8 @@ export default {
 <style scoped>
   .loginContainer{
     height: 100%;
+  }
+  .login_form{
+    padding: 0 40px;
   }
 </style>

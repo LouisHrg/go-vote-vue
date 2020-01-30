@@ -21,7 +21,7 @@
             <span>{{ survey.desc }}</span>
           </div>
         </el-card>
-        <div>
+        <div class="message_form">
           <Formikax @onSubmit="handleVote" v-slot="{ handleSubmit }">
             <form @submit.prevent="handleSubmit">
               <Field label="Message" name="vote" />
@@ -94,5 +94,8 @@ export default {
 <style scoped>
 .clearfix {
   margin-bottom: 20px;
+}
+.message_form{
+  padding: 0 300px;
 }
 </style>

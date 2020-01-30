@@ -36,6 +36,7 @@
   }
   .clearfix{
     margin-bottom: 20px;
+    padding: 0 300px;
   }
   .clearfix-top{
     margin-top: 50px;
