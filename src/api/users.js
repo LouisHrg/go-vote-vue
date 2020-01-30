@@ -6,5 +6,10 @@ export default {
   },
   getUser () {
     return axios.get('/user');
-  }
+  },
+  patchUser (uuid, resource) {
+    console.log(resource);
+    
+    return axios.patch(`/users/${uuid}`, { resource });
+  },
 };

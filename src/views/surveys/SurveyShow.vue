@@ -34,7 +34,6 @@
 
     <el-row class="clearfix" type="flex" justify="center">
       <el-col :span="14">
-        <el-card :body-style="{ padding: '0px' }">
           <div style="padding: 14px;">
             <el-row justify="align">
               <el-col>
@@ -54,7 +53,6 @@
               </el-col>
             </el-row>
           </div>
-        </el-card>
       </el-col>
     </el-row>
   </div>

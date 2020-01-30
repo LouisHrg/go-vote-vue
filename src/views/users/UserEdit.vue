@@ -7,13 +7,13 @@
             <el-button type="success" icon="el-icon-user-solid" circle></el-button>
           </el-tooltip>
           <div class="clearfix-top">
-            <Formikax @onSubmit="submitSurvey" v-slot="{ handleSubmit }">
+            <Formikax @onSubmit="updateUser" v-slot="{ handleSubmit }">
               <form @submit.prevent="handleSubmit">
                 <img class="avatar-logo" :src="tempAvatar" />
                 <Field label="Avatar" name="avatar" :value="user.avatar" @input="handleAvatar" />
-                <Field label="First Name" name="firstName" :value="user.firstname"/>
-                <Field label="Last Name" name="lastName" :value="user.lastname"/>
-                <Field label="Birth Date" type="date" name="date_of_birth" :value="user.date_of_birth | dateFormatter"/>
+                <Field label="First Name" name="firstname" :value="user.firstname"/>
+                <Field label="Last Name" name="lastname" :value="user.lastname"/>
+                <Field label="Birth Date" type="date_of_birth" name="date_of_birth" :value="user.date_of_birth | dateFormatter"/>
                 <Field label="Bio" name="bio" as="textarea">{{ user.bio }}</Field>
                 <Field label="Email" name="email" :value="user.email"/>
                 <Field label="Adress" value="15, rue notre Dame" disabled/>
@@ -56,6 +56,7 @@
 <script>
 import { mapState } from 'vuex';
 import dayjs from 'dayjs';
+import { mapActions } from 'vuex';
 export default {
   name: 'UserEdit',
   mounted () {
@@ -75,8 +76,84 @@ export default {
     }
   },
   methods: {
+    ...mapActions('users', [
+      'patchUser'
+    ]),
     handleAvatar (value) {
       this.tempAvatar = value;
+    },
+    async updateUser ({values} ) {
+      var { avatar, firstname, lastname, date_of_birth, bio, email } = values;
+      if (avatar==='') {
+        this.$message({
+          showClose: true,
+          message: 'Please specify an avatar.',
+          type: 'error'
+        });
+        return;
+      }
+
+      if (firstname==='') {
+        this.$message({
+          showClose: true,
+          message: 'Please enter a First Name',
+          type: 'error'
+        });
+        return;
+      }
+
+      if (lastname==='') {
+        this.$message({
+          showClose: true,
+          message: 'Please enter a Last Name.',
+          type: 'error'
+        });
+        return;
+      }
+
+      if (date_of_birth==='') {
+        this.$message({
+          showClose: true,
+          message: 'Please enter a Date of Birth.',
+          type: 'error'
+        });
+        return;
+      }
+
+      if (bio==='') {
+        this.$message({
+          showClose: true,
+          message: 'Please enter a Bio.',
+          type: 'error'
+        });
+        return;
+      }
+
+      if (email==='') {
+        this.$message({
+          showClose: true,
+          message: 'Please enter an Email.',
+          type: 'error'
+        });
+        return;
+      }
+      date_of_birth = new Date(date_of_birth);
+      console.log(firstname);
+      try {
+        console.log(firstname);
+        await this.patchUser(this.user.uuid, { avatar, firstname, lastname, date_of_birth, bio, email } );
+        this.$message({
+          showClose: true,
+          message: 'User updated ! 😂',
+          type: 'success'
+        });
+      } catch (error) {
+        this.$message({
+          showClose: true,
+          message: 'Oupsie ! Something went wrong ^^"' + error,
+          type: 'error'
+        });
+      }
     }
   }
 };
