@@ -63,7 +63,6 @@ export default {
   computed: mapState({
     user: state => state.auth.user,
     avatar: state => state.auth.user.avatar
-
   }),
   filters: {
     dateFormatter: date => {
