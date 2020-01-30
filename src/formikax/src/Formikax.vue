@@ -25,7 +25,6 @@ export default {
   },
   methods: {
     handleSubmit: function () {
-      console.log('handleSubmit');
       this.$emit('onSubmit', {
         values: this.values
       });

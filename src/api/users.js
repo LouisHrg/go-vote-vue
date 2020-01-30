@@ -8,8 +8,6 @@ export default {
     return axios.get('/user');
   },
   patchUser (uuid, resource) {
-    console.log(resource);
-    
-    return axios.patch(`/users/${uuid}`, { resource });
-  },
+    return axios.patch(`/users/${uuid}`, resource);
+  }
 };
